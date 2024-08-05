@@ -1,0 +1,35 @@
+services:
+  mysql:
+    container_name: 'db-mysql'
+    image: 'mariadb:10.4'
+    restart: always
+    environment:
+      - 'MARIADB_DATABASE=mydatabase'
+      - 'MARIADB_PASSWORD=apure123'
+      - 'MARIADB_ROOT_PASSWORD=rin_vixen54'
+      - 'MARIADB_USER=myuser'
+    ports:
+      - '3307:3306'
+    healthcheck:
+      test:  ["CMD", "/usr/local/bin/healthcheck.sh", "--su-mysql", "--connect",  "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - db-data:/var/lib/mysql
+
+  app:
+    build: .
+    volumes:
+      - .:/opt/app
+    ports:
+      - 8081:8080
+    depends_on:
+      - mysql
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/mydatabase?permitMysqlScheme
+      - SPRING_DATASOURCE_USERNAME=myuser
+      - SPRING_DATASOURCE_PASSWORD=apure123
+
+volumes:
+  db-data:
