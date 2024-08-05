@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "a118cf89-fbed-486c-940d-7193fe752371",
+		"name": "prueba linktic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37441247"
+	},
+	"item": [
+		{
+			"name": "Calcular primas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"tipoIdentificacion\": \"CC\",\r\n        \"nroIdentificacion\": \"118888\",\r\n        \"valorAsegurado\": 558\r\n    },\r\n    {\r\n        \"valorAsegurado\": 20000,\r\n        \"nroIdentificacion\": \"51000003\",\r\n        \"tipoIdentificacion\": \"CE\"\r\n    },\r\n    {\r\n        \"valorAsegurado\": 2,\r\n        \"nroIdentificacion\": \"51000002\",\r\n        \"tipoIdentificacion\": \"WE\"\r\n    },\r\n    {\r\n        \"valorAsegurado\": 8481842,\r\n        \"nroIdentificacion\": \"79000002\",\r\n        \"tipoIdentificacion\": \"CC\"\r\n    }\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar usuarios",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"tipoIdentificacion\": \"CC\",\r\n        \"nroIdentificacion\": \"118888\",\r\n        \"valorAsegurado\": 0\r\n    },\r\n    {\r\n        \"valorAsegurado\": 100000,\r\n        \"nroIdentificacion\": \"51000002\",\r\n        \"tipoIdentificacion\": \"CE\"\r\n    },\r\n    {\r\n        \"valorAsegurado\": 2480,\r\n        \"nroIdentificacion\": \"51000002\",\r\n        \"tipoIdentificacion\": \"WE\"\r\n    },\r\n    {\r\n        \"valorAsegurado\": 25844441,\r\n        \"nroIdentificacion\": \"79000002\",\r\n        \"tipoIdentificacion\": \"CC\"\r\n    }\r\n\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
